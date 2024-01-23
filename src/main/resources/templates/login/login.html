@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Booki | Login</title>
+	
+	<link rel="icon" href="./assets/img/book-2-fill.svg" type="image/svg" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+	<main>
+		<div th:replace="~{fragments/_header :: content-header (~{::title})}"></div>
+		<div class="container d-flex flex-column align-items-center justify-content-center mt-5">
+			<p>
+				<b>Booki</b> Login
+			</p>
+			<!-- /.login-logo -->
+			<div class="card" style="width: 300px">
+				<div class="card-body login-card-body">
+					<p class="login-box-msg">Entre com suas credenciais para iniciar a seção</p>
+
+					<form method="post"
+                        role="form"
+                        th:action="@{/login}">
+						<div class="input-group mb-3">
+							<input type="email" class="form-control" placeholder="E-mail" name="username" required>
+							<div class="input-group-append">
+								<div class="input-group-text">
+									<span class="fas fa-user"></span>
+								</div>
+							</div>
+						</div>
+						<div class="input-group mb-3">
+							<input type="password" class="form-control" placeholder="Senha" name="password" required>
+							<div class="input-group-append">
+								<div class="input-group-text">
+									<span class="fas fa-lock"></span>
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-4">
+								<button type="submit" class="btn btn-primary btn-block">Entrar</button>
+							</div>
+						</div>
+					</form>
+				</div>
+				<!-- /.login-card-body -->
+			</div>
+		</div>
+		<!-- /.login-box -->
+	</main>
+	<footer th:replace="~{fragments/_footer :: footer}"></footer>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"></script>
+</body>
+
+</html>

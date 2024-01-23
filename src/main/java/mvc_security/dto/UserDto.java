@@ -9,9 +9,7 @@ public class UserDto
 {
     private Long id;
     @NotEmpty
-    private String firstName;
-    @NotEmpty
-    private String lastName;
+    private String Nome;
     @NotEmpty(message = "O e-mail não deve estar vazio")
     @Email
     private String email;

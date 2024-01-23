@@ -11,4 +11,7 @@ public interface UserService {
     User findUserByEmail(String email);
 
     List<UserDto> findAllUsers();
+    
+    void deleteUserById(Long userId);
+    
 }

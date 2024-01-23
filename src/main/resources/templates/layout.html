@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br" th:fragment="layout (title, content, styles, scripts)">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Booki | <th:block th:insert="${title}"> Dashboard </th:block></title>
+	
+	<link rel="icon" href="./assets/img/book-2-fill.svg" type="image/svg" />
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css">
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<th:block th:replace="${styles}"></th:block>
+</head>
+<body>
+	<main>
+		<div th:replace="~{fragments/_header :: content-header (${title})}"></div>
+		<nav th:replace="~{fragments/_navbar :: nav}"></nav>
+	
+		<div th:insert="${content}"></div>
+	</main>
+	<footer th:replace="~{fragments/_footer :: footer}"></footer>
+	<th:block th:replace="${scripts}"></th:block>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>

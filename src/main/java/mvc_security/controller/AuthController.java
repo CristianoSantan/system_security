@@ -1,7 +1,5 @@
 package mvc_security.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,53 +15,36 @@ import mvc_security.service.impl.UserService;
 
 @Controller
 public class AuthController {
-	
+
 	@Autowired
 	private UserService userService;
 
-    @GetMapping("/index")
-    public String home(){
-        return "index";
-    }
-    
-    @GetMapping("/login")
-    public String login(){
-        return "login";
-    }
-    
-    @GetMapping("/register")
-    public String showRegistrationForm(Model model){
-        // crie um objeto de modelo para armazenar dados de formulário
-        UserDto user = new UserDto();
-        model.addAttribute("user", user);
-        return "register";
-    }
-    
-    @PostMapping("/register/save")
-    public String registration(@Valid @ModelAttribute("user") UserDto userDto,
-                               BindingResult result,
-                               Model model){
-        User existingUser = userService.findUserByEmail(userDto.getEmail());
+	@GetMapping("/")
+	public String home() {
+		return "home/home.html";
+	}
 
-        if(existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()){
-            result.rejectValue("email", null,
-                    "Já existe uma conta cadastrada com o mesmo email");
-        }
+	@GetMapping("/register")
+	public String showRegistrationForm(Model model) {
+		UserDto user = new UserDto();
+		model.addAttribute("user", user);
+		return "register/index.html";
+	}
 
-        if(result.hasErrors()){
-            model.addAttribute("user", userDto);
-            return "register";
-        }
+	@PostMapping("/register/save")
+	public String registration(@Valid @ModelAttribute("user") UserDto userDto, BindingResult result, Model model) {
+		User existingUser = userService.findUserByEmail(userDto.getEmail());
 
-        userService.saveUser(userDto);
-        return "redirect:/register?success";
-    }
-    
-    @GetMapping("/users")
-    public String users(Model model){
-        List<UserDto> users = userService.findAllUsers();
-        model.addAttribute("users", users);
-        return "users";
-    }
+		if (existingUser != null && existingUser.getEmail() != null && !existingUser.getEmail().isEmpty()) {
+			result.rejectValue("email", null, "Já existe uma conta cadastrada com o mesmo email");
+		}
 
+		if (result.hasErrors()) {
+			model.addAttribute("user", userDto);
+			return "register";
+		}
+
+		userService.saveUser(userDto);
+		return "login";
+	}
 }

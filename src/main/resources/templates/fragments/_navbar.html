@@ -1,0 +1,19 @@
+<nav th:fragment="nav" class="">
+	<ul class="nav justify-content-center">
+		<li class="nav-item">
+			<a class="nav-link active" aria-current="page" th:href="@{/}">Home</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{/users}">Usuarios</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{/login}">Login</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{/register}">Registrar</a>
+		</li>
+		<li class="nav-item">
+			<a class="nav-link" th:href="@{/logout}" title="Logout"><i class="ri-logout-box-line"></i></a>
+		</li>
+	</ul>
+</nav>
